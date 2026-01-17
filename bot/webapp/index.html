@@ -1,0 +1,112 @@
+cat > /root/xferant-vpn-bot/bot/webapp/index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xferant VPN Mini App</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        h1 { 
+            margin-bottom: 20px; 
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0,255,136,0.5);
+        }
+        .xferant-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+        button { 
+            font-size: 1.1rem; 
+            margin: 8px; 
+            padding: 12px 20px; 
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: rgba(0,255,136,0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(0,255,136,0.3);
+        }
+        button:hover {
+            background: rgba(0,255,136,0.3);
+            transform: translateY(-2px);
+        }
+        .tariff { 
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .action { 
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            font-weight: bold;
+        }
+        #link { 
+            margin-top: 20px; 
+            word-break: break-all; 
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        #qr { 
+            margin-top: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .benefits {
+            text-align: left;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="xferant-logo">🔒</div>
+        <h1>Xferant VPN</h1>
+        
+        <div class="benefits">
+            <strong>💎 Премиум сервер в Швеции:</strong>
+            <br>• 🚀 Высокая скорость 270 Mbps
+            <br>• 🔒 Защита от блокировок
+            <br>• 🌐 Шведское законодательство
+            <br>• 📱 До 3 устройств
+        </div>
+
+        <h3>🔒 Выберите тариф</h3>
+        <button class="tariff" onclick="sendAction('buy_m1')">1️⃣ 1 месяц - 200₽</button>
+        <button class="tariff" onclick="sendAction('buy_m3')">3️⃣ 3 месяца - 500₽</button>
+        <button class="tariff" onclick="sendAction('buy_m6')">6️⃣ 6 месяцев - 900₽</button>
+        
+        <h3>⚡ Действия</h3>
+        <button class="action" onclick="sendAction('connect')">🔗 Подключение</button>
+        <button class="action" onclick="sendAction('stats')">📊 Статистика</button>
+        
+        <div id="link"></div>
+        <canvas id="qr"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+EOF
